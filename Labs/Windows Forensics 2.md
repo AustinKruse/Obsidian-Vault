@@ -20,7 +20,7 @@ The NTFS file system keeps track of changes made to a file using a feature calle
 
 A file is a stream of data organized in a file system. Alternate data streams (ADS) is a feature in NTFS that allows files to have multiple streams of data stored in a single file. Internet Explorer and other browsers use Alternate Data Streams to identify files downloaded from the internet (using the ADS Zone Identifier). Malware has also been observed to hide their code in ADS.
 
-# **Master File Table**
+## **Master File Table**
 
 Like the File Allocation Table, there is a Master File Table in NTFS. However, the Master File Table, or MFT, is much more extensive than the File Allocation Table. It is a structured database that tracks the objects stored in a volume. Therefore, we can say that the NTFS file system data is organized in the Master File Table. From a forensics point of view, the following are some of the critical files in the MFT:
 
@@ -64,35 +64,137 @@ Password: 123
 4096
 ```
 
-Using the hint, to parse the $Boot file, this was the output:<br>![[file-20240903213412509.png]]
+Using the hint, to parse the $Boot file, this was the output:<br>![](assets/file-20240903213412509.png)
 
-Below is a screenshot of the available `Master File Table Objects`:<br>![[file-20240903215229162.png]]
+Below is a screenshot of the available `Master File Table Objects`:<br>![](assets/file-20240903215229162.png)
 
+# Recovering Deleted Files
+--------------------------------------
+source: https://tryhackme.com/r/room/windowsforensics2 - Deleted Files & Data Recovery
 
+Understanding the file systems makes it easier to know how files are deleted, recovered, and wiped. As we learned in the previous two tasks, a file system stores the location of a file on the disk in a table or a database. When we delete a file from the file system, the file system deletes the entries that store the file's location on the disk. For the file system, the location where the file existed is now available for writing or unallocated. However, the file contents on disk are still there, as long as they are not overwritten by the file system while copying another file or by the disk firmware while performing maintenance on the disk.
 
-# Recovering Deleted Data
+Similarly, there is data on the disk in different unallocated clusters, which can possibly be recovered. To recover this data, we have to understand the file structure of different file types to identify the specific file through the data we see in a hex editor. However, we will not cover that in this room. What we will do, is to use a tool that does this work for us and identifies deleted files in a disk image file. But what is a disk image file?
 
+Disk Image:
+A disk image file is a file that contains a bit-by-bit copy of a disk drive. A bit-by-bit copy saves all the data in a disk image file, including the metadata, in a single file. Thus, while performing forensics, one can make several copies of the physical evidence, i.e., the disk, and use them for investigation. This helps in two ways. 1) The original evidence is not contaminated while performing forensics, and 2) The disk image file can be copied to another disk and analyzed without using specialized hardware.
 
+Recovering files using Autopsy
+With that out of the way, let's see how we can recover deleted files from a disk. We will use Autopsy for recovering deleted files. For a room dedicated to Autopsy, you can go here.
 
+## Questions
 
+1. **There is another xlsx file that was deleted. What is the full name of that file?**
 
+```
+   Tryhackme.xlsx
+```
 
+![](assets/file-20240904155155294.png)<br>Used Autopsy to view deleted files, by right clicking any of these and selecting extract we can see the contents.
 
+2. **What is the name of the TXT file that was deleted from the disk?**
 
+  ```
+   TryHackMe2.txt
+  ```
 
+3. **Recover the TXT file from Question #2. What was written in this txt file?**
 
+   ```
+   thm-4n6-2-4
+   ```
+	
+	![](assets/file-20240904155351544.png)
 
+# Evidence of Execution
 
+## Windows Prefetch files
+
+When a program is run in Windows, it stores its information for future use. This stored information is used to load the program quickly in case of frequent use. This information is stored in prefetch files which are located in the `C:\Windows\Prefetch` directory.
+
+Prefetch files have an extension of `.pf`. Prefetch files contain the last run times of the application, the number of times the application was run, and any files and device handles used by the file. Thus it forms an excellent source of information about the last executed programs and files.
+
+We can use Prefetch Parser (PECmd.exe) from Eric Zimmerman's tools for parsing Prefetch files and extracting data.
+
+![](assets/file-20240904160326469.png)<br>
+To run Prefetch Parser on a file and save the results in a CSV, we can use the following command:
+
+`PECmd.exe -f <path-to-Prefetch-files> --csv <path-to-save-csv>`  
+
+Similarly, for parsing a whole directory, we can use the following command:
+
+`PECmd.exe -d <path-to-Prefetch-directory> --csv <path-to-save-csv>`
+
+We can use this information to answer the questions at the end.
+
+## Windows 10 Timeline
+
+Windows 10 stores recently used applications and files in an SQLite database called the Windows 10 Timeline. This data can be a source of information about the last executed programs. It contains the application that was executed and the focus time of the application. The Windows 10 timeline can be found at the following location:
+
+`C:\Users\<username>\AppData\Local\ConnectedDevicesPlatform\{randomfolder}\ActivitiesCache.db`
+
+We can use Eric Zimmerman's WxTCmd.exe for parsing Windows 10 Timeline. We get the following options when we run it:
+
+![](assets/file-20240904160545654.png)
+
+We can use the following command to run WxTCmd:
+`WxTCmd.exe -f <path-to-timeline-file> --csv <path-to-save-csv>`
+
+## Windows Jump Lists
+
+Windows introduced jump lists to help users go directly to their recently used files from the taskbar. We can view jumplists by right-clicking an application's icon in the taskbar, and it will show us the recently opened files in that application. This data is stored in the following directory:
+
+`C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations`
+
+Jumplists include information about the applications executed, first time of execution, and last time of execution of the application against an AppID.
+
+We can use Eric Zimmerman's JLECmd.exe to parse Jump Lists. We get the following options when we run it:
+
+![](assets/file-20240904160801658.png)
+
+We can use the following command to parse Jumplists using JLECmd.exe:
+`JLECmd.exe -f <path-to-Jumplist-file> --csv <path-to-save-csv>`
+
+In the folder named `triage`, present on the Desktop of the attached machine, we have extracted the Windows directory of a system we want to investigate. It retains the directory structure of the original Windows directory, that is, `C:\Windows` directory from the system is mapped on to `C:\users\thm-4n6\Desktop\triage\C\Windows`. Now let's use the information we have learned to perform analysis on the data saved in the folder named `triage` on the Desktop in the attached VM and answer the following questions.
+
+If you are having trouble viewing the CSV file, you can use EZviewer from the EZtools folder.
+## Questions
+
+1. **How many times was gkape.exe executed?**
+
+   ```
+   2
+   ```
+
+2. **What is the last execution time of gkape.exe?**
+
+   ```
+   12/01/2021 13:04
+   ```
+
+3. **When Notepad.exe was opened on 11/30/2021 at 10:56, how long did it remain in focus?**
+
+   ```
+   00:00:41
+   ```
+
+4. **What program was used to open C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt?**
+
+   ```
+   Notepad.exe
+   ```
 
 
 
 
 Sources:  
 - [Microsoft NTFS Reserved File Names](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/b04c3bd0-79dc-4e58-b8ed-74f19fc2ea0a) and deduced that the since the $MftMirr (Mft Mirror) was a backup copy of the entire file system (first four MFT including $MFT), and is typically used to cross reference for any manipulation.
-![[file-20240903210524680.png]]
+![](assets/file-20240903210524680.png)
 ### Summary:
 
 - **$MftMirr** is the Master File Table Mirror, a backup copy of the first few entries of the $MFT on an NTFS volume.
 - It exists to provide redundancy and help maintain file system integrity in the event of corruption or damage to the $MFT.
 - In a forensic context, examining the $MftMirr can be crucial when analyzing a potentially damaged NTFS volume to recover critical metadata.
 
+
+- https://tryhackme.com/r/room/windowsforensics2
