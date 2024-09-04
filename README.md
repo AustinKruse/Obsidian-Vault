@@ -13,6 +13,6 @@ Runs the following commands one by one:
 - `Convert All Link Paths to Relative`
 - `Collect All Attachments`
 - `Delete Empty Folders`
-
-
 - https://forum.obsidian.md/t/the-easiest-way-to-setup-obsidian-git-to-backup-notes/51429
+
+

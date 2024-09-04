@@ -56,7 +56,7 @@ One of the Desktops in the research lab at Organization X is suspected to have b
    ```plaintext
    Z:\setups\python-3.8.2.exe
    ```
-	In the RecentApps folder, of the NTUSER.DAT hive (since this the hive where all `THM-4n6` files will be),
+	In the RecentApps folder, of the NTUSER.DAT hive (since this the hive where all `THM-4n6` files will be) I found the full path for Python 3.8.2 installer.
 
 6. **When was the USB device with the friendly name 'USB' last connected?**
 

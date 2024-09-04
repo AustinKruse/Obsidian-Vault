@@ -1,8 +1,6 @@
 # Windows Forensics 2 - Walkthrough
 
-## **The NTFS file system**
-
-![](assets/96d9a0dc7ca01f0ed9ea0fad307d1d99.png)
+## **The NTFS file System**
 
 As observed in the previous task, the FAT file system is a very basic file system. It does the job when it comes to organizing our data, but it offers little more in terms of security, reliability, and recovery capabilities. It also has certain limitations when it comes to file and volume sizes. Hence, Microsoft developed a newer file system called the New Technology File System (NTFS) to add these features. This file system was introduced in 1993 with the Windows NT 3.1. However, it became mainstream since Windows XP. The NTFS file system resolves many issues present in the FAT file system and introduces a lot of new features. We will discuss some of the features below.
 
@@ -22,7 +20,7 @@ The NTFS file system keeps track of changes made to a file using a feature calle
 
 A file is a stream of data organized in a file system. Alternate data streams (ADS) is a feature in NTFS that allows files to have multiple streams of data stored in a single file. Internet Explorer and other browsers use Alternate Data Streams to identify files downloaded from the internet (using the ADS Zone Identifier). Malware has also been observed to hide their code in ADS.
 
-## **Master File Table**
+# **Master File Table**
 
 Like the File Allocation Table, there is a Master File Table in NTFS. However, the Master File Table, or MFT, is much more extensive than the File Allocation Table. It is a structured database that tracks the objects stored in a volume. Therefore, we can say that the NTFS file system data is organized in the Master File Table. From a forensics point of view, the following are some of the critical files in the MFT:
 
@@ -48,6 +46,31 @@ Username: thm-4n6
 
 Password: 123
 
+---------------------
+## Questions
+
+**1. Parse the $MFT file placed in C:\users\THM-4n6\Desktop\triage\C\ and analyze it. What is the Size of the file located at .\Windows\Security\logs\SceSetupLog.etl?**  
+
+```
+49152
+```
+	![[file-20240903201712632.png]]<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
+	`MFTECmd.exe -f <path-to-$MFT-file> --csv <name-of-dir>`
+	<br>![[file-20240903204245171.png]]<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
+
+**2. What is the size of the cluster for the volume from which this triage was taken?**  
+
+```
+4096
+```
+
+Using the hint, to parse the $Boot file, this was the output:<br>![[file-20240903213412509.png]]
+
+Below is a screenshot of the available `Master File Table Objects`:<br>![[file-20240903215229162.png]]
+
+
+
+# Recovering Deleted Data
 
 
 
@@ -58,4 +81,18 @@ Password: 123
 
 
 
+
+
+
+
+
+
+Sources:  
+- [Microsoft NTFS Reserved File Names](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/b04c3bd0-79dc-4e58-b8ed-74f19fc2ea0a) and deduced that the since the $MftMirr (Mft Mirror) was a backup copy of the entire file system (first four MFT including $MFT), and is typically used to cross reference for any manipulation.
+![[file-20240903210524680.png]]
+### Summary:
+
+- **$MftMirr** is the Master File Table Mirror, a backup copy of the first few entries of the $MFT on an NTFS volume.
+- It exists to provide redundancy and help maintain file system integrity in the event of corruption or damage to the $MFT.
+- In a forensic context, examining the $MftMirr can be crucial when analyzing a potentially damaged NTFS volume to recover critical metadata.
 
