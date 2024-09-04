@@ -28,7 +28,7 @@ One of the Desktops in the research lab at Organization X is suspected to have b
    3
    ```
 	I Opened up the 5 hives, went to the SAM hive & clicked the users folder.  This showed `THM-4n6`, `thm-user`, & `thm-user2`, they are the only user accounts with User ID's over 1000.
-	![](c1f0095f0c99b94ef7fda44f97961730.png)
+	![](assets/c1f0095f0c99b94ef7fda44f97961730.png)<br>
 
 2. **What is the username of the account that has never been logged in?**
 
@@ -48,7 +48,7 @@ One of the Desktops in the research lab at Organization X is suspected to have b
 2021-11-24 18:18:48
 ```
 
-	![[assets/Pasted image 20240829085020.png]]
+	![[assets/Pasted image 20240829085020.png]]<br>
 	Searched for keyword `Recent` & there are a few spots in the different hives to find recent information, like Apps, Docs, Items, and more.  The information was found in the NTUSER.DAT hive.
 
 5. **What is the complete path from where the python 3.8.2 installer was run?**
@@ -62,17 +62,17 @@ One of the Desktops in the research lab at Organization X is suspected to have b
 
    ```plaintext
    2021-11-24 18:40:06
-   ```
+   ``` 
 	This USB information can be found in the SOFTWARE hive, `SOFTWARE\Microsoft\Windows Portable Devices` and in the `Devices`
-	![](43ac820c78937470fc6d4ef3fccf3aa6.png)
-	![](ea203a61c31a64373bac818a9104c398.png)
+	![](assets/43ac820c78937470fc6d4ef3fccf3aa6.png)
+	![](assets/ea203a61c31a64373bac818a9104c398.png)
 	This shows the GUID `{E251921F-4DA2-11EC-A783-001A7DDA7110}` & the friendly name `USB`.  Now to determine when it was last connected, we check `SYSTEM\USBSTOR` & cross-reference the GUID.
-	![](e48343a0d1f4b2e321ae97d97105c0bd.png)
+	![](assets/e48343a0d1f4b2e321ae97d97105c0bd.png)
 
 # Cheat Sheet
 -------------------
  
-![](WindowsForensicsCheatsheet-TryHackMe-1642092762578.pdf)
+![](assets/WindowsForensicsCheatsheet-TryHackMe-1642092762578.pdf)
 
 What is the path for the five main registry hives, DEFAULT, SAM, SECURITY, SOFTWARE, and SYSTEM?
 

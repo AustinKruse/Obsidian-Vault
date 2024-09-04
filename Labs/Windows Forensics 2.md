@@ -2,7 +2,7 @@
 
 ## **The NTFS file system**
 
-![](96d9a0dc7ca01f0ed9ea0fad307d1d99.png)
+![](assets/96d9a0dc7ca01f0ed9ea0fad307d1d99.png)
 
 As observed in the previous task, the FAT file system is a very basic file system. It does the job when it comes to organizing our data, but it offers little more in terms of security, reliability, and recovery capabilities. It also has certain limitations when it comes to file and volume sizes. Hence, Microsoft developed a newer file system called the New Technology File System (NTFS) to add these features. This file system was introduced in 1993 with the Windows NT 3.1. However, it became mainstream since Windows XP. The NTFS file system resolves many issues present in the FAT file system and introduces a lot of new features. We will discuss some of the features below.
 
