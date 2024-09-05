@@ -47,7 +47,7 @@ Username: thm-4n6
 Password: 123
 
 ---------------------
-## Questions
+### Questions
 
 **1. Parse the $MFT file placed in C:\users\THM-4n6\Desktop\triage\C\ and analyze it. What is the Size of the file located at .\Windows\Security\logs\SceSetupLog.etl?**  
 
@@ -206,7 +206,6 @@ An interesting thing about the IE/Edge browsing history is that it includes file
 `C:\Users\<username>\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat`
 
 The files/folders accessed appear with a `file:///*` prefix in the IE/Edge history. Though several tools can be used to analyze Web cache data, you can use Autopsy to do so in the attached VM. For doing that, select Logical Files as a data source.
-
 
 Sources:  
 - [Microsoft NTFS Reserved File Names](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/b04c3bd0-79dc-4e58-b8ed-74f19fc2ea0a) and deduced that the since the $MftMirr (Mft Mirror) was a backup copy of the entire file system (first four MFT including $MFT), and is typically used to cross reference for any manipulation.
