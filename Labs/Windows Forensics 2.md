@@ -184,7 +184,28 @@ If you are having trouble viewing the CSV file, you can use EZviewer from the EZ
    Notepad.exe
    ```
 
+# File / Folder knowledge
+## Shortcut Files
 
+Windows creates a shortcut file for each file opened either locally or remotely. The shortcut files contain information about the first and last opened times of the file and the path of the opened file, along with some other data. Shortcut files can be found in the following locations:
+
+`C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\`
+
+`C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\`
+
+We can use Eric Zimmerman's LECmd.exe (Lnk Explorer) to parse Shortcut files. When we run the LECmd.exe, we see the following options:
+ ![](assets/file-20240904163657847.png)
+
+We can use the following command to parse shortcut files using LECmd.exe:
+`LECmd.exe -f <path-to-shortcut-files> --csv <path-to-save-csv>`
+
+# IE/Edge history
+
+An interesting thing about the IE/Edge browsing history is that it includes files opened in the system as well, whether those files were opened using the browser or not. Hence, a valuable source of information on opened files in a system is the IE/Edge history. We can access the history in the following location:
+
+`C:\Users\<username>\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat`
+
+The files/folders accessed appear with a `file:///*` prefix in the IE/Edge history. Though several tools can be used to analyze Web cache data, you can use Autopsy to do so in the attached VM. For doing that, select Logical Files as a data source.
 
 
 Sources:  
