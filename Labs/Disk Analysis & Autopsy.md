@@ -52,7 +52,7 @@ Sort the above image by the `Date Accessed` column.
 ```
 First I checked the registry files by navigating to `Windows/System32/config`, selecting the `SYSTEM` hive & navigating to `CurrentControlSet\Services\Tcpip\Parameters\Interfaces` on the `Application` horizontal tab:
 ![](assets/file-20240922071333176.png)
-Unfortunately, the IP address field `DhcpIPaddress` is set to 0.0.0.0 which is pointed back at itself (loopback), after some snooping around I found a program installed `Look@LAN`. 
+Unfortunately, the IP address field `DhcpIPaddress` is set to 0.0.0.0 which is not a valid IP to have for an endpoint, after some snooping around I found a program installed `Look@LAN`. 
 
 ![](assets/file-20240922075525599.png)
 
