@@ -55,10 +55,10 @@ Password: 123
 49152
 ```
 
-![[file-20240903201712632.png]]<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
+![](assets/file-20240903201712632.png)<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
 `MFTECmd.exe -f <path-to-$MFT-file> --csv <name-of-dir>`
 
-![[file-20240903204245171.png]]<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
+![](assets/file-20240903204245171.png)<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
 **2. What is the size of the cluster for the volume from which this triage was taken?**  
 
 ```

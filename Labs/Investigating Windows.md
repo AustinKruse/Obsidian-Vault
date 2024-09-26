@@ -10,8 +10,6 @@ Connect to the machine using RDP. The credentials the machine are as follows:
 Username: Administrator  
 Password: letmein123!
 
-Please note that this machine does not respond to ping (ICMP) and may take a few minutes to boot up.
-
 -------------------------------------------------------------
 ### Questions
 **1. What's the version and year of the Windows machine?**

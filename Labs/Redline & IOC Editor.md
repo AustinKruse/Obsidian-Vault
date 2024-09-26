@@ -3,13 +3,12 @@ TryHackMe exercise to learn how to use [Redline](https://fireeye.market/apps/211
 [Instructions Here. (THM website)](https://tryhackme.com/r/room/btredlinejoxr3d)
 
 [Redline User-Guide Best Practices Section (pdf).](https://fireeye.market/assets/apps/211364/documents/877936_en.pdf#page=94)
+
 [Mandiant IOC Editor User Guide (pdf)](https://fireeye.market/assets/apps/S7cWpi9W//9cb9857f/ug-ioc-editor.pdf)
+
 [Redline & IOC Editor](#Sources)
 
 In this exercise, I used [Redline](https://fireeye.market/apps/211364) to create collectors to obtain and analyze memory from an infected windows computer.  I also use [Mandiant IOC Editor](https://fireeye.market/assets/apps/S7cWpi9W//9cb9857f/ug-ioc-editor.pdf) to create an IOC & scan it against collected data.  Via RDP, connected to Windows VM & used pre-installed Redline & IOC Editor to answer Exam Questions.
-
-```table-of-contents
-```
 
 ------------------------------------------
 # Part 1 - Create a Standard Collector
