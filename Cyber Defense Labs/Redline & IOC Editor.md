@@ -22,28 +22,28 @@ In this exercise, I used [Redline](https://fireeye.market/apps/211364) to create
 
 For this exercise I needed to use the Standard Collector, the fastest option. <br>
 
-![](f85ef85179228cd4ab4f181a7b54462c.png)<br>
+![](assets/f85ef85179228cd4ab4f181a7b54462c.png)<br>
 
 After Selecting 'Create a Standard Collector', the following appears:<br>
-![](99593f5c4a605067c0668b0dbab9b226.png)<br>
+![](assets/99593f5c4a605067c0668b0dbab9b226.png)<br>
 
 Select the OS & click 'Edit your script' to configure it as follows: 
 **Note: removed `Hook Detection` per the instructions**
 <br>
-![](ea0460858801f314c6a0f5e65f0f08f7.png)<br>
+![](assets/ea0460858801f314c6a0f5e65f0f08f7.png)<br>
 
-![](a08f00b43f95a39da193f6f3f3843386.png)<br>
+![](assets/a08f00b43f95a39da193f6f3f3843386.png)<br>
 
-![](39c24a94a7d5132b17cad6efd718179c.png)<br>
+![](assets/39c24a94a7d5132b17cad6efd718179c.png)<br>
 
-![](a655c4abfcce709e1d55aa4714dbe38b.png)<br>
+![](assets/a655c4abfcce709e1d55aa4714dbe38b.png)<br>
 
-![](a32b483763fcfd2437fd44d5b72aa09e.png)<br>
+![](assets/a32b483763fcfd2437fd44d5b72aa09e.png)<br>
 
 
 After clicking okay to save our script, we set where the Collector is going to save all the data it collects (Note: Make sure folder is empty):<br>
 
-![](9f082ce3134add135a517baa8db99380.png)
+![](assets/9f082ce3134add135a517baa8db99380.png)
 
 
 # Part 2 - Collect the Data
@@ -54,11 +54,11 @@ Ok, so now we have a batch file to run on the infected machine, and collect all 
 
 Please reference the "[Best Practices Section](https://fireeye.market/assets/apps/211364/documents/877936_en.pdf#page=94)" of the Redline documentation, In this exercise we created **and** ran the script on the infected endpoint.  **Typically we would** create the redline script `RunRedlineAudit.bat` configured with our desired settings, and **move this to a USB drive**, plug that into the infected machine and have it write to the USB, move collected data back to the Analysis computer with Redline installed to examine the results.<br>
 
-![](dc0e55813b46de76da22f3458af6eafc.png)<br>
+![](assets/dc0e55813b46de76da22f3458af6eafc.png)<br>
 
 After starting the batch file a command prompt window will show until the script is done, and it will close automatically:<br>
 
-![](71cb98270326ec96895d82fd0158ffff.png)<br>
+![](assets/71cb98270326ec96895d82fd0158ffff.png)<br>
 
 Note: This process may take a while, 15-20min in this case.  Although this was the fastest scan type.
 
@@ -98,7 +98,7 @@ Note: This process may take a while, 15-20min in this case.  Although this was t
 ## Analyzing Data
 After the command prompt window disappears there will be a Sessions directory (created in the output directory we specified when making the script) with a file named `AnalysisSession1.mans`, from here we just open the file to inspect the contents within Redline.<br>
 
-![](6e5b8c044f6a021377f166eae116466e.png)<br>
+![](assets/6e5b8c044f6a021377f166eae116466e.png)<br>
 
 
 1. Where in the Redline UI can you view information about the Logged in User?
@@ -119,13 +119,13 @@ Now you should be familiar with some of the data collection terms and techniques
    ```plaintext
    Windows Server 2019 Standard 17763
    ```
-	![](a16c9662e5f2b70e2940c1414af43524.png)
+	![](assets/a16c9662e5f2b70e2940c1414af43524.png)
 
 2. **What is the suspicious scheduled task that got created on the victim's computer?**
    ```plaintext
    MSOfficeUpdateFa.ke
    ```
-	![](c0b2f214d32bde61c2ccd98cf82833aa.png)
+	![](assets/c0b2f214d32bde61c2ccd98cf82833aa.png)
 	This was the only Scheduled Task that had the Account Logon Type as: ```Task_Logon_Interactive_Token ```
 
 3. **Find the message that the intruder left for you in the task.**
@@ -138,7 +138,7 @@ Now you should be familiar with some of the data collection terms and techniques
    ```plaintext
    546
    ```
-	![](bc6c093c3425d474bf2b79b0c656ce91.png)
+	![](assets/bc6c093c3425d474bf2b79b0c656ce91.png)
 
 5. **Provide the message for the Event ID.**
    ```plaintext
@@ -150,7 +150,7 @@ Now you should be familiar with some of the data collection terms and techniques
    ```plaintext
    https://wormhole.app/download-stream/gI9vQtChjyYAmZ8Ody0AuA
    ```
-	 ![](a78eff5e95f869fb9a42d3232a32c21e.png)
+	 ![](assets/a78eff5e95f869fb9a42d3232a32c21e.png)
 
 7. **Provide the full path to where the file was downloaded to including the filename.**
    ```plaintext
@@ -162,21 +162,21 @@ Now you should be familiar with some of the data collection terms and techniques
    ```plaintext
    THM{600D-C@7cH-My-FR1EnD}
    ```
-	![](34e7595b29c3208066731cd7971532f8.png)<br>
+	![](assets/34e7595b29c3208066731cd7971532f8.png)<br>
 	We just had to open the file path to the answer below on the target machine, and we see the message.
 
 # IOC Search Collector
 
 First we create an IOC using `Mandiant IOCe`:
-![](168feb38c6fe19a588e5b923e4fd1b02.png)We then save this to an IOC folder, in practice we would already have a folder full of IOC's we would like to scan for but in this example we are walked through how to create and IOC for a keylogger.  
+![](assets/168feb38c6fe19a588e5b923e4fd1b02.png)We then save this to an IOC folder, in practice we would already have a folder full of IOC's we would like to scan for but in this example we are walked through how to create and IOC for a keylogger.  
 
 Per the [Microsoft Documentation](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-rawinputdevice#:~:text=keyboard.%20See%20Remarks.-,RIDEV_INPUTSINK,-0x00000100), RIDEV_INPUTSINK is called to capture raw keyboard input even when the caller is in the background.  Seems like this would be very typical for keyloggers to use.
-![](6356ffc4b2eb2bc928ba17acf4c44da6.png)
+![](assets/6356ffc4b2eb2bc928ba17acf4c44da6.png)
 
 Alright, now that we have the `Keylogger IOC` saved to our IOC folder, we need to create an `IOC Search Collector` inside Redline.  This will create the `RunRedlineAudit.bat` file to be ran on the infected machine.
-![](3f20c83d5455baf7f7b8da74a83957ce.png)<br>
+![](assets/3f20c83d5455baf7f7b8da74a83957ce.png)<br>
 After selecting the folder where all the IOCs would be saved, in this case only the 1 we created earlier, we need to create the script.  Keep in mind this script is is for the Keylogger IOC we created, if we were scanning for other IOCs we may need to select different options.<br>
-![](742d105def879c79077843daf1867bc1.png)<br>
+![](assets/742d105def879c79077843daf1867bc1.png)<br>
 Run the `RunRedlineAudit.bat` **as Administrator** to generate our data.  After it completes, open the `AnalysisSession1.mans` file using Redline & navigate to IOC Reports tab on the bottom left. 
 
 If there are no reports populated, we would create one manually.
@@ -185,8 +185,8 @@ If there are no reports populated, we would create one manually.
 Use the following screenshots to answer the questions below:
 
 **Screenshots**
-![](c1ddecd781b59e6a40d877a1d47a0e48.png)
-![](64962de640163788e08ec57fdf5f2c2e.png)
+![](assets/c1ddecd781b59e6a40d877a1d47a0e48.png)
+![](assets/64962de640163788e08ec57fdf5f2c2e.png)
 1. **What is the actual filename of the Keylogger?**
 
    ```plaintext
@@ -247,15 +247,15 @@ So far, you only know the following artifacts for the file: 
 -------------------------------------------------------
 
 First I created an IOC using `Mandiant IOCe` & saved it to an empty IOC folder:
-![](9a088e77dbeada81764d16098294a9da.png)
+![](assets/9a088e77dbeada81764d16098294a9da.png)
 The IOC is looking for files that contains string 1 **AND** string 2 **AND** is 834936 bytes. 
 
 Then used Redline to search for IOCs.
-![](dad34ef03adcfc1b5aa10d9048cc0a0f.png)
+![](assets/dad34ef03adcfc1b5aa10d9048cc0a0f.png)
 
 **IOC Search Collector Report Results:**
-![](da8865c9204db49eba57c68e38e8a008.png)
-![](2c944441e108827146ccea0a5acbec29.png)
+![](assets/da8865c9204db49eba57c68e38e8a008.png)
+![](assets/2c944441e108827146ccea0a5acbec29.png)
 
 [Redline & IOC Editor](#Scenario%20-%20IOC%20Search%20Collector%20Analysis)
 ### Questions
@@ -288,7 +288,7 @@ Then used Redline to search for IOCs.
    ```plaintext
    57492d33b7c0755bb411b22d2dfdfdf088cbbfcd010e30dd8d425d5fe66adff4
    ```
-	![](0fcc7e7c8ec9005b9a4be533ad6c3536.png)
+	![](assets/0fcc7e7c8ec9005b9a4be533ad6c3536.png)
 	Using the obtained MD5 hash, I checked [VirusTotal.com](https://www.virustotal.com/gui/file/57492d33b7c0755bb411b22d2dfdfdf088cbbfcd010e30dd8d425d5fe66adff4/details) to locate the SHA-256 hash for the file.
 
 7. **The attacker managed to masquerade the real filename. Can you find it having the hash in your arsenal?**
@@ -296,7 +296,7 @@ Then used Redline to search for IOCs.
    PsExec.exe
    ```
    
-   ![](20b1c336adf4233509daf0f8313e3a5d.png)<br>
+   ![](assets/20b1c336adf4233509daf0f8313e3a5d.png)<br>
 	   Also on [VirusTotal.com](https://www.virustotal.com/gui/file/57492d33b7c0755bb411b22d2dfdfdf088cbbfcd010e30dd8d425d5fe66adff4/details)
 
 
@@ -320,27 +320,27 @@ Are you ready to perform the memory analysis of the compromised host? You have a
    ```plaintext
    Windows 7 Home Basic
    ```
-	![](7f3e50bdac27813d06f091b263051912.png)
+	![](assets/7f3e50bdac27813d06f091b263051912.png)
 2. **Can you find the name of the note left on the Desktop for the "Charles"?**
 
    ```plaintext
    _R_E_A_D___T_H_I_S___AJYG1O_.txt
    ```
-	![](155d725385eee02d3df5b216eefbf0a4.png)
+	![](assets/155d725385eee02d3df5b216eefbf0a4.png)
 3. **Find the Windows Defender service; what is the name of its service DLL?**
 
    ```plaintext
    MpSvc.dll
    ```
 	Search for "defender" on the `Windows Services` tab.  Scroll over to the right to view the `Service DLL`.
-	![](6c608dfefaf35abe21068a3be2e77d5c.png)<br>
+	![](assets/6c608dfefaf35abe21068a3be2e77d5c.png)<br>
 4. **The user manually downloaded a zip file from the web. Can you find the filename?**
 
    ```plaintext
    eb5489216d4361f9e3650e6a6332f7ee21b0bc9f3f3a4018c69733949be1d481.zip
    ```
 	On the `File Download History` tab, searching for `zip` showed the filename.
-	![](8fea40491a5efde308dfa00c08a48c20.png)
+	![](assets/8fea40491a5efde308dfa00c08a48c20.png)
 5. **Provide the filename of the malicious executable that got dropped on the user's Desktop.**
 
    ```plaintext
@@ -353,7 +353,7 @@ Are you ready to perform the memory analysis of the compromised host? You have a
    fe1bc60a95b2c2d77cd5d232296a7fa4
    ```
 	Double click the file to show more info.
-	![](1437e36c991f984bae22428ca3cf92cf.png)
+	![](assets/1437e36c991f984bae22428ca3cf92cf.png)
 7. **What is the name of the ransomware?**
 
    ```plaintext

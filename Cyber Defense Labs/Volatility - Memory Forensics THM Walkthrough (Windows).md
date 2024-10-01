@@ -43,7 +43,7 @@ By using Volatility plugin **windows.info** we can obtain the answers to the fir
 python3 vol.py /Scenarios/Investigations/Investigation-1.vmem windows.info
 ```
 
-![](b93eb825b1e7a752933b3a67dd2a9e13.png)
+![](assets/b93eb825b1e7a752933b3a67dd2a9e13.png)
 
 ---
 
@@ -73,7 +73,7 @@ explorer.exe
 
 By using Volatility plugins **windows.psscan** & **windows.pstree** we can view the processes to obtain the answers to questions 3, 4, 5 & 6. The `reader_sl.exe` process was created by explorer.exe at the same exact time, which indicates the process was started when the desktop started/just after logon. `reader_sl.exe` is typically an Adobe Reader speed loader according to Google, but the rest of the processes are core Windows processes.
 
-![](0eda1119a13f3a826c5ce1ac5bacd604.png)
+![](assets/0eda1119a13f3a826c5ce1ac5bacd604.png)
 
 ```bash
 python3 vol.py -f /Scenarios/Investigations/Investigation-1.vmem windows.psscan
@@ -92,7 +92,7 @@ Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)
 To obtain the user-agent employed by the adversary let's first dump the process memory for the suspicious process 1640. To do so, we will use the windows.memmap module with the following command:
 
 Let's see what options we need to provide:
-![](53f5cca570e4b26f5de2d83522fecd51.png)
+![](assets/53f5cca570e4b26f5de2d83522fecd51.png)
 
 ```bash
 sudo python3 vol.py -o /opt/volatility3/test/ -f /Scenarios/Investigations/Investigation-1.vmem windows.memmap --pid 1640 --dump
@@ -104,7 +104,7 @@ After running the command, we can see a `pid.1640.dmp` file was generated. Let's
 sudo strings test/pid.1640.dmp | grep -iF '41.168.5.140' -C 5
 ```
 
-![](aa8698565e13302f8e09890a9fcbfba3.png)
+![](assets/aa8698565e13302f8e09890a9fcbfba3.png)
 
 Using grep `-iF` is for case **i**nsensitive & **F**ixed String format. The `-C 5` option will show 5 lines above and below a match.
 
@@ -117,7 +117,7 @@ Y
 ```
 
 By using strings on the process memory dump, we can see chase.com along with other bank industry-related domains.
-![](a105cea1247ec7ca75647b5a846957dd.png)
+![](assets/a105cea1247ec7ca75647b5a846957dd.png)
 
 ---
 
@@ -143,7 +143,7 @@ By using the windows.pstree module, we can locate the process name with PID 740.
 sudo python3 vol.py -f /Scenarios/Investigations/Investigation-2.raw windows.pstree
 ```
 
-![](6e89d6fab88c3a985141a2e8d9698878.png)
+![](assets/6e89d6fab88c3a985141a2e8d9698878.png)
 
 ---
 
@@ -157,7 +157,7 @@ Using the `windows.dlllist` module and grep, we can find the full path of the su
 ```bash
 sudo python3 vol.py -o case002/ -f /Scenarios/Investigations/Investigation-2.raw windows.dlllist | grep -i 'wanadecryptor'
 ```
-![](39bb3fd514a98a003c3491a12445ad42.png)
+![](assets/39bb3fd514a98a003c3491a12445ad42.png)
 
 ---
 
@@ -196,7 +196,7 @@ For this answer, I listed the DLLs for process ID 740 using the windows.dlllist 
 sudo python3 vol.py -o case002/ -f /Scenarios/Investigations/Investigation-2.raw windows.dlllist --pid 740
 ```
 
-![](8cd4e450108b86d872da334a215fb493.png)
+![](assets/8cd4e450108b86d872da334a215fb493.png)
 
 I went on Google and found out that [WS2_32.dll](https://learn.microsoft.com/en-us/windows/win32/winsock/initialization-2) is typically triggered by an application calling either **socket or WSASocket** to create a new socket to be associated with a service provider whose interface DLL is not currently loaded into memory.
 
@@ -209,7 +209,7 @@ MsWinZonesCacheCounterMutexA
 ```
 
 To answer this question, since I already knew the name of the malware, I looked up on Google what the **known mutex** was:
-![](586bed5b20cfb89ff14a1ca5dc273942.png)
+![](assets/586bed5b20cfb89ff14a1ca5dc273942.png)
 
 ---
 
@@ -221,8 +221,8 @@ windows.filescan
 
 Using the `python3 vol.py --help` command, I browsed through the modules and found the one I thought fit best.
 
-![](c1d9b797965efaade30c1df3566ac3da.png)
-![](8cd4e450108b86d872da334a215fb493.png)
+![](assets/c1d9b797965efaade30c1df3566ac3da.png)
+![](assets/8cd4e450108b86d872da334a215fb493.png)
 I went on google and found out that [WS2_32.dll](https://learn.microsoft.com/en-us/windows/win32/winsock/initialization-2) is typically triggered by an application calling either <b>socket or WSASocket</b> to create a new socket to be associated with a service provider whose interface DLL is not currently loaded into memory.
 
 15. What mutex can be found that is a known indicator of the malware in question in Case 002?
@@ -232,7 +232,7 @@ MsWinZonesCacheCounterMutexA
 ```
 
 To answer this question, since I already knew the name of the malware, I looked up on google what the <b>known mutex</b> was:
-![](586bed5b20cfb89ff14a1ca5dc273942.png)
+![](assets/586bed5b20cfb89ff14a1ca5dc273942.png)
 16. What plugin could be used to identify all files loaded from the malware working directory in Case 002?
 
 ```
@@ -241,7 +241,7 @@ windows.filescan
 
 Using the `python3 vol.py --help` command, I browsed through the modules and found the one I thought fit best.
 
-![](c1d9b797965efaade30c1df3566ac3da.png)
+![](assets/c1d9b797965efaade30c1df3566ac3da.png)
 
 # Commonly used commands / Cheatsheet
 
