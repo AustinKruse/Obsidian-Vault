@@ -55,19 +55,19 @@ Password: 123
 49152
 ```
 
-![](7da03e831cbffde5d543a9fd6528fac6.png)<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
+![](assets/7da03e831cbffde5d543a9fd6528fac6.png)<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
 `MFTECmd.exe -f <path-to-$MFT-file> --csv <name-of-dir>`
 
-![](7b2760f2966d84b1a2d7161e5b5bd83d.png)<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
+![](assets/7b2760f2966d84b1a2d7161e5b5bd83d.png)<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
 **2. What is the size of the cluster for the volume from which this triage was taken?**  
 
 ```
 4096
 ```
 
-Using the hint, to parse the $Boot file, this was the output:<br>![](f1d66d5af38628a00621e4f52a573caa.png)
+Using the hint, to parse the $Boot file, this was the output:<br>![](assets/f1d66d5af38628a00621e4f52a573caa.png)
 
-Below is a screenshot of the available `Master File Table Objects`:<br>![](222f0a4bb40b5d20063b4f38c0620563.png)
+Below is a screenshot of the available `Master File Table Objects`:<br>![](assets/222f0a4bb40b5d20063b4f38c0620563.png)
 # Recovering Deleted Files
 --------------------------------------
 source: https://tryhackme.com/r/room/windowsforensics2 - Deleted Files & Data Recovery
@@ -90,7 +90,7 @@ With that out of the way, let's see how we can recover deleted files from a disk
    Tryhackme.xlsx
 ```
 
-![](583c498181d3e62e0381405efed742f3.png)<br>Used Autopsy to view deleted files, by right clicking any of these and selecting extract we can see the contents.
+![](assets/583c498181d3e62e0381405efed742f3.png)<br>Used Autopsy to view deleted files, by right clicking any of these and selecting extract we can see the contents.
 
 2. **What is the name of the TXT file that was deleted from the disk?**
 
@@ -104,7 +104,7 @@ With that out of the way, let's see how we can recover deleted files from a disk
    thm-4n6-2-4
    ```
 	
-	![](7660fe493667e1fe3c1f8d62a0ef3175.png)
+	![](assets/7660fe493667e1fe3c1f8d62a0ef3175.png)
 
 # Evidence of Execution
 
@@ -209,7 +209,7 @@ The files/folders accessed appear with a `file:///*` prefix in the IE/Edge his
 
 Sources:  
 - [Microsoft NTFS Reserved File Names](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/b04c3bd0-79dc-4e58-b8ed-74f19fc2ea0a) and deduced that the since the $MftMirr (Mft Mirror) was a backup copy of the entire file system (first four MFT including $MFT), and is typically used to cross reference for any manipulation.
-![](2ec0fbc89dd142d93ae6d8ffec5c06e6.png)
+![](assets/2ec0fbc89dd142d93ae6d8ffec5c06e6.png)
 ### Summary:
 
 - **$MftMirr** is the Master File Table Mirror, a backup copy of the first few entries of the $MFT on an NTFS volume.

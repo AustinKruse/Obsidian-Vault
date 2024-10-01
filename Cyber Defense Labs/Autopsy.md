@@ -12,7 +12,7 @@ Using Autopsy & the provided `.aut` file, answer the questions.
 Windows 7 Ultimate Service Pack 1
 ```
 After browsing the tabs, I found the `Operating System Information` tab containing the answer.
-![](8ab87d07fb11d408bff11ee3508f4485.png)
+![](assets/8ab87d07fb11d408bff11ee3508f4485.png)
 
 2. What percentage of the drive are documents? Include the % in your answer.
 
@@ -20,7 +20,7 @@ After browsing the tabs, I found the `Operating System Information` tab containi
 40.8%
 ```
 
-![](d9663d9406826a9681d7fc73c6ae567a.png)
+![](assets/d9663d9406826a9681d7fc73c6ae567a.png)
 
 3. Generate an HTML report as shown in the task and view the "Case Summary" section.  What is the job number of the "Interesting Files Identifier" module?
 
@@ -28,7 +28,7 @@ After browsing the tabs, I found the `Operating System Information` tab containi
 10
 ```
 
-![](d2066733b02072a1e667c804e9675a5d.png)
+![](assets/d2066733b02072a1e667c804e9675a5d.png)
 
 # Questions - Set 2
 
@@ -40,7 +40,7 @@ After browsing the tabs, I found the `Operating System Information` tab containi
 Eraser
 ```
 Using `Keyword Search`, I searched for the version number of the program and looked for `.exe` since it was asking for programs.
-![](57081a76e8eec3e4dd1946b83be396db.png)
+![](assets/57081a76e8eec3e4dd1946b83be396db.png)
 
 2. A user has a Password Hint. What is the value?
 
@@ -73,7 +73,7 @@ Taking a look at the `Web Search` vertical tab, I sorted the results by the text
 anti-forensic tools
 ```
 Again in the search history, just sorted by Date Accessed column & find the timestamp.
-![](2f18f9e9063c7a29794d378942b465c8.png)
+![](assets/2f18f9e9063c7a29794d378942b465c8.png)
 
 6. What MD5 hash value of the binary is listed as an Interesting File?
 

@@ -19,7 +19,7 @@ This room should help to reinforce what you learned in the Autopsy room. Have fu
 3f08c518adb3b5c1359849657a9b2079
 ```
 Selecting `HASAN2.E01` data source, going to the summary -> container tab shows the md5 hash.
-![](96c6f6975b4224f8a25f3c914ee0e202.png)
+![](assets/96c6f6975b4224f8a25f3c914ee0e202.png)
 
 2. What is the computer account name?
 
@@ -27,7 +27,7 @@ Selecting `HASAN2.E01` data source, going to the summary -> container tab shows 
 DESKTOP-0R59DJ3
 ```
 Under the `Operating System Information` vertical tab, the name is listed:
-![](5f40c3cbe9364cad6855c87a180ed3c2.png)
+![](assets/5f40c3cbe9364cad6855c87a180ed3c2.png)
 
 3. List all the user accounts. (alphabetical order)
 
@@ -35,7 +35,7 @@ Under the `Operating System Information` vertical tab, the name is listed:
 H4S4N, joshwa, keshav, sandhya, shreya, sivapriya, srini, suba
 ```
 Under the `Operating System User Account` vertical tab, the names are listed:
-![](f823991ad18a324861c6af2038ac3801.png)
+![](assets/f823991ad18a324861c6af2038ac3801.png)
 The `Date Accessed` column is useful for determining accounts that have ever been accessed on the device.  I also just sorted them by Username to get the correct order.
 
 4. Who was the last user to log into the computer?
@@ -51,14 +51,14 @@ Sort the above image by the `Date Accessed` column.
 192.168.130.216
 ```
 First I checked the registry files by navigating to `Windows/System32/config`, selecting the `SYSTEM` hive & navigating to `CurrentControlSet\Services\Tcpip\Parameters\Interfaces` on the `Application` horizontal tab:
-![](93cca1ecd7a5fae56aa232adb3c6677e.png)
+![](assets/93cca1ecd7a5fae56aa232adb3c6677e.png)
 Unfortunately, the IP address field `DhcpIPaddress` is set to 0.0.0.0 which is not a valid IP to have for an endpoint, after some snooping around I found a program installed `Look@LAN`. 
 
-![](d231bfb4011eb07c6aeec873bee605a3.png)
+![](assets/d231bfb4011eb07c6aeec873bee605a3.png)
 
 Upon inspection of the installation folder, I found an `irunin.ini` file (an initialization file).  When looking at the text for this file, we can see the IP & MAC address it used.
 
-![](fcb1644ec29c0324c88d55508df414a2.png)
+![](assets/fcb1644ec29c0324c88d55508df414a2.png)
 6. What was the MAC address of the computer? (XX-XX-XX-XX-XX-XX)
 
 ```
@@ -72,7 +72,7 @@ This is listed immediately underneath the IP address in the previous screenshot.
 Intel(R) PRO/1000 MT Desktop Adapter
 ```
 Looking for the `SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkCards` 
-![](f45256ca5cc45e1c23e3a6f26bfe9e50.png)
+![](assets/f45256ca5cc45e1c23e3a6f26bfe9e50.png)
 8. What is the name of the network monitoring tool?
 
 ```
@@ -86,7 +86,7 @@ This was discovered above when searching for the IPv4 address.
 12°52'23.0"N 80°13'25.0"E
 ```
 Looking at the bookmarks, there was only one for google maps.
-![](00113de85d1412ba4398f6b7c55189d9.png)
+![](assets/00113de85d1412ba4398f6b7c55189d9.png)
 
 10. A user has his full name printed on his desktop wallpaper. What is the user's full name?
 
@@ -94,7 +94,7 @@ Looking at the bookmarks, there was only one for google maps.
 Anto Joshwa
 ```
 In another users downloads folder, we find a cyberpunk desktop background with text added to the top right of the image saying: `Anto Joshwa` - In the main `Web Downloads` folder we see a few different options that could be background images.  
-![](4b4ab8cfc198f1cbb9eee43d5b90f520.png)
+![](assets/4b4ab8cfc198f1cbb9eee43d5b90f520.png)
 Notice how most of the entries has `:Zone.Identifier` after it.  This is just `Autopsy` marking the file as downloaded from the web, double-click it, and it will take you to the file location where you can see an image preview.
 ![](assets/6bde0cf3a17a96e1179aa93bd84534f1.png)
 Zoom into the image, and we see the full name of the user.
@@ -105,7 +105,7 @@ Zoom into the image, and we see the full name of the user.
 flag{HarleyQuinnForQueen}
 ```
 In the `C:\\Users\shreya\AppData\Romaing\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_History.txt` file would show all of the previous PowerShell commands ran for each user.  Upon inspection of user `shreya` `ConsoleHost_History.txt` file, we can see the flag.
-![](164ec751abe3b09cd95a41591818251d.png)
+![](assets/164ec751abe3b09cd95a41591818251d.png)
 
 12. The same user found an exploit to escalate privileges on the computer. What was the message to the device owner?
 
@@ -113,7 +113,7 @@ In the `C:\\Users\shreya\AppData\Romaing\Microsoft\Windows\PowerShell\PSReadLine
 flag{i-hacked-you}
 ```
 In the above screenshot, we see a file `lala.txt` located on the Desktop.  When going to inspect the document, I found a PowerShell script `exploit.ps1` & inside we see comments indicating where to place the payload & also the flag we are looking for.
-![](7fca3c9fc1466cd08c163892a4c0832c.png)
+![](assets/7fca3c9fc1466cd08c163892a4c0832c.png)
 
 13. 2 hack tools focused on passwords were found in the system. What are the names of these tools? (alphabetical order)
 
