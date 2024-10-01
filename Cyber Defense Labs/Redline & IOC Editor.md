@@ -105,7 +105,7 @@ After the command prompt window disappears there will be a Sessions directory (c
 ```plaintext
 System Information
 ```
-	![[assets/Pasted image 20240822165005.png]]
+![](assets/a1a9146032d3c4a3425e08b0901dd684.png)
 <br>
 
 # Standard Collector Analysis Scenario

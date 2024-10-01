@@ -55,19 +55,19 @@ Password: 123
 49152
 ```
 
-![](assets/file-20240903201712632.png)<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
+![](7da03e831cbffde5d543a9fd6528fac6.png)<br>MFTECmd parses data from the different files created by the NTFS file system like $MFT, $Boot, etc. The above screenshot shows the available options for parsing MFT files. For parsing the $MFT file, we can use the following command:
 `MFTECmd.exe -f <path-to-$MFT-file> --csv <name-of-dir>`
 
-![](assets/file-20240903204245171.png)<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
+![](7b2760f2966d84b1a2d7161e5b5bd83d.png)<br>Using `EZViewer` I used `ctrl + f` to search for `SceSetupLog.etl` and found the file size.  
 **2. What is the size of the cluster for the volume from which this triage was taken?**  
 
 ```
 4096
 ```
 
-Using the hint, to parse the $Boot file, this was the output:<br>![](assets/file-20240903213412509.png)
+Using the hint, to parse the $Boot file, this was the output:<br>![](f1d66d5af38628a00621e4f52a573caa.png)
 
-Below is a screenshot of the available `Master File Table Objects`:<br>![](assets/file-20240903215229162.png)
+Below is a screenshot of the available `Master File Table Objects`:<br>![](222f0a4bb40b5d20063b4f38c0620563.png)
 # Recovering Deleted Files
 --------------------------------------
 source: https://tryhackme.com/r/room/windowsforensics2 - Deleted Files & Data Recovery
@@ -90,7 +90,7 @@ With that out of the way, let's see how we can recover deleted files from a disk
    Tryhackme.xlsx
 ```
 
-![](assets/file-20240904155155294.png)<br>Used Autopsy to view deleted files, by right clicking any of these and selecting extract we can see the contents.
+![](583c498181d3e62e0381405efed742f3.png)<br>Used Autopsy to view deleted files, by right clicking any of these and selecting extract we can see the contents.
 
 2. **What is the name of the TXT file that was deleted from the disk?**
 
@@ -104,7 +104,7 @@ With that out of the way, let's see how we can recover deleted files from a disk
    thm-4n6-2-4
    ```
 	
-	![](assets/file-20240904155351544.png)
+	![](7660fe493667e1fe3c1f8d62a0ef3175.png)
 
 # Evidence of Execution
 
@@ -116,7 +116,7 @@ Prefetch files have an extension of `.pf`. Prefetch files contain the last run 
 
 We can use Prefetch Parser (PECmd.exe) from Eric Zimmerman's tools for parsing Prefetch files and extracting data.
 
-![](assets/file-20240904160326469.png)<br>
+![](assets/46b6ab5b7b8449f5f8caa1ae5bbfba0a.png)<br>
 To run Prefetch Parser on a file and save the results in a CSV, we can use the following command:
 
 `PECmd.exe -f <path-to-Prefetch-files> --csv <path-to-save-csv>`  
@@ -135,7 +135,7 @@ Windows 10 stores recently used applications and files in an SQLite database cal
 
 We can use Eric Zimmerman's WxTCmd.exe for parsing Windows 10 Timeline. We get the following options when we run it:
 
-![](assets/file-20240904160545654.png)
+![](assets/90d0319fe8aad1b5c69014d54c61895f.png)
 
 We can use the following command to run WxTCmd:
 `WxTCmd.exe -f <path-to-timeline-file> --csv <path-to-save-csv>`
@@ -150,7 +150,7 @@ Jumplists include information about the applications executed, first time of exe
 
 We can use Eric Zimmerman's JLECmd.exe to parse Jump Lists. We get the following options when we run it:
 
-![](assets/file-20240904160801658.png)
+![](assets/9042d968615a84510ad0ab9b6c670210.png)
 
 We can use the following command to parse Jumplists using JLECmd.exe:
 `JLECmd.exe -f <path-to-Jumplist-file> --csv <path-to-save-csv>`
@@ -194,7 +194,7 @@ Windows creates a shortcut file for each file opened either locally or remotely.
 `C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\`
 
 We can use Eric Zimmerman's LECmd.exe (Lnk Explorer) to parse Shortcut files. When we run the LECmd.exe, we see the following options:
- ![](assets/file-20240904163657847.png)
+ ![](assets/ce45d1ebb30ae6481641912ff05ec0c2.png)
 
 We can use the following command to parse shortcut files using LECmd.exe:
 `LECmd.exe -f <path-to-shortcut-files> --csv <path-to-save-csv>`
@@ -209,7 +209,7 @@ The files/folders accessed appear with a `file:///*` prefix in the IE/Edge his
 
 Sources:  
 - [Microsoft NTFS Reserved File Names](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/b04c3bd0-79dc-4e58-b8ed-74f19fc2ea0a) and deduced that the since the $MftMirr (Mft Mirror) was a backup copy of the entire file system (first four MFT including $MFT), and is typically used to cross reference for any manipulation.
-![](assets/file-20240903210524680.png)
+![](2ec0fbc89dd142d93ae6d8ffec5c06e6.png)
 ### Summary:
 
 - **$MftMirr** is the Master File Table Mirror, a backup copy of the first few entries of the $MFT on an NTFS volume.
