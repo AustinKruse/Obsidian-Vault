@@ -3,7 +3,7 @@
 ## Cyber Defense Pathway - TryHackMe
 [📚 Cyber Defense Pathway Outline](https://tryhackme.com/path/outline/blueteam)
 
-|                                                                        📄 **TryHackMe Cyber Defense Writeups** 📄                                                                         |
+|                                                                      📄 **TryHackMe Cyber Defense Lab Writeups** 📄                                                                       |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                                          [📝 Autopsy](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Autopsy.md)                                          |
 |             [📝 Basic Malware Reverse Engineering](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Basic%20Malware%20Reverse%20Engineering.md)             |
