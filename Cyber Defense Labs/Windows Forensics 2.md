@@ -49,7 +49,7 @@ Password: 123
 ---------------------
 ### Questions
 
-**1. Parse the $MFT file placed in C:\users\THM-4n6\Desktop\triage\C\ and analyze it. What is the Size of the file located at .\Windows\Security\logs\SceSetupLog.etl?**  
+**1. Parse the $MFT file placed in `C:\users\THM-4n6\Desktop\triage\C\` and analyze it. What is the Size of the file located at `.\Windows\Security\logs\SceSetupLog.etl`?**  
 
 ```
 49152
@@ -178,7 +178,7 @@ If you are having trouble viewing the CSV file, you can use EZviewer from the EZ
    00:00:41
    ```
 
-4. **What program was used to open C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt?**
+4. **What program was used to open `C:\Users\THM-4n6\Desktop\KAPE\KAPE\ChangeLog.txt?`**
 
    ```
    Notepad.exe
