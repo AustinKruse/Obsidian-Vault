@@ -29,7 +29,8 @@
 ### 📄 TryHackMe SOC Level 1 - Lab Writeups 📄
 |                                 **Cyber Defense Frameworks**                                 | **Cyber Threat Intel** |
 | :------------------------------------------------------------------------------------------: | :--------------------: |
-| [📝Summit](https://github.com/AustinKruse/Obsidian-Vault/blob/main/SOC%201%20Labs/Summit.md) |                        |
+| [📝Summit](https://github.com/AustinKruse/Obsidian-Vault/blob/main/SOC%201%20Labs/Summit.md) |    **Coming Soon**     |
+
 Future Labs
 -------------------------------------------------
 - https://tryhackme.com/r/room/adcertificatetemplates
