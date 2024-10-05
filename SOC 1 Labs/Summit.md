@@ -7,7 +7,7 @@ Austin
 TLDR;
 1. Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder; 
 
-2. Provided 6 malware samples & advised to block them from network using above dahsboard tools; after successfully blocking them, the flag is provided.
+2. Provided 6 malware samples (with different evasion techniques) & tasked with blocking them from network using above dahsboard tools; after successfully blocking them, the flag is provided.
 ```
 
 Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder block the provided sample.exe's from the network.  This is an interactive lab, where once you complete an objective, there is a Mail tab that will show you further instructions.
