@@ -28,10 +28,13 @@ THM{f3cbf08151a11a6a331db9c6cf5f4fe4}
 ```
 By taking a look at the first email, we are provided with `sample1.exe`.  
 ![](assets/file-20241004134151011.png)
+
 After using the sandbox to analyze it, we are provided with the hash(es).  
 ![](assets/file-20241004134244861.png)
 I took the MD5 hash, went to the `Manage Hashes` tab & added a rule for the MD5 Hash `cbda8ae000aa9cbe7c8b982bae006c2a` & got a confirmation pop up & the flag.
+
 ![](assets/file-20241004133516859.png)
+
 ![](assets/file-20241004134313373.png)
 
 2. What is the second flag you receive after successfully detecting sample2.exe?
@@ -41,7 +44,11 @@ THM{2ff48a3421a938b388418be273f4806d}
 ```
 The above screenshot shows the `sample2.exe`, after using the sandbox we see:
 ![](assets/file-20241004135235946.png)
+
+
 ![](assets/file-20241004135254249.png)
+
+
 Per the email containing the flag for question 1, I need to do more to block this sample due to the fact that hashes are changed so easily.  Only one byte needs to be changed, or even just a comment added & once recompiled the new binary will not have the same hash therefore bypassing the rule.
 
 For `sample2.exe` we see it connecting to `154.35.10.113:4444`.
@@ -49,9 +56,13 @@ Going to the `Firewall Rule Manager` tab we can see options for setting up a fir
 - Ingress: Controls traffic entering a network
 - Egress: Controls traffic leaving a network
 So, lets try this:
+
 ![](assets/file-20241004140121935.png)
+
 Nice! We successfully prevented `sample2.exe` from connecting to its C2 Server. 
 ![](assets/file-20241004140227495.png)
+
+
 ![](assets/file-20241004140636158.png)
 
 3. What is the third flag you receive after successfully detecting sample3.exe?
@@ -75,10 +86,14 @@ THM{c956f455fc076aea829799c0876ee399}
 Here is the sandbox scan results:
 ![](assets/file-20241004155424358.png)
 ![](assets/file-20241004155442949.png)
-For this sample, we can detect if the Windows Defender Realtime Monitoring Registry is modified by creating a `Sigma Rule` using the `Sigma Rule Builder`.  
+For this sample, we can detect if the Windows Defender Realtime Monitoring Registry is modified by creating a `Sigma Rule` using the `Sigma Rule Builder`.
+
 ![](assets/file-20241004162131066.png)
+
 ![](assets/file-20241004162145901.png)
+
 ![](assets/file-20241004162206624.png)
+
 After clicking `Validate Rule` we see the new rule created:
 ![](assets/file-20241004162331386.png)
 
@@ -91,14 +106,22 @@ After submitting the rule, we get an email confirmation containing the flag & th
 THM{46b21c4410e47dc5729ceadef0fc722e}
 ```
 The above screenshot contains the email we get, containing a `outgoing_connections.log` file, which is logs of the outgoing network connections from the last 12 hours on the victim machine.
+
 ![](assets/file-20241004162846594.png)
+
 Immediately, I notice that there are multiple Destination IP's, but one in particular `51.102.10.19` consistently has a size of `97 bytes`.  This particular communication is also in perfect 30 minute intervals, which is definitely noteworthy.  
 
 This appears to be a `still alive` function, to determine if the infected host is still connected to the C2 server or not.
 
 Using the `Sigma Rule Builder` again, we select `Sysmon Event Logs` just like in the last question, but for the 2nd step we select `Network Connections`.  
+
+
 ![](assets/file-20241004163923335.png)
+
+
 ![](assets/file-20241004164331150.png)
+
+
 This will detect `Any` network connections where the size of the connection is `97 bytes` & in `1800` seconds (30 minute) intervals. 
 
 After selecting `Validate Rule` we see the created rule:
@@ -113,7 +136,11 @@ We also get another email, containing the flag & instructions on the next questi
 THM{c8951b2ad24bbcbac60c16cf2c83d92c}
 ```
 We are provided with `commands.log` that contains the commands the attacker uses & in what order.
+
+
 ![](assets/file-20241004165447219.png)
+
+
 The commands starting with `dir` are going to output the filenames & directory names inside of the directory provided.  For example, the first line is appending the output of `dir c:\` to `%temp%\exfiltr8.log`.  
 
 So, the first 4 commands are obtaining filenames & directory names for `C:\`, `C:\Documents and Settings`, `C:\Program Files\`, & for the `D:\` drive (if it exists).  Add, 
@@ -127,9 +154,12 @@ The `ver` command will output the version of windows, although Windows 11 will s
 `netstat -ano` - TCP connections, `a` - all, `n` - IP/MAC in number format, `o` - shows process ID
 `net start` - lists all network services running
 
+
 ![](assets/file-20241004191122284.png)
 
+
 ![](assets/file-20241004192324447.png)
+
 
 After validating this rule, we get sent back to the inbox & we have the last flag.
 ![](assets/file-20241004192833813.png)

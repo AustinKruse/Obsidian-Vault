@@ -39,5 +39,5 @@ Future Pathways
 
 
 notes (please disregard, just testing):
-https://github.com/AustinKruse/AustinKruse/blob/main/assets/nessus.png
-https://github.com/AustinKruse/AustinKruse/blob/main/assets/Windows-fundamentals-1.png
+- https://github.com/AustinKruse/AustinKruse/blob/main/assets/nessus.png
+- https://github.com/AustinKruse/AustinKruse/blob/main/assets/Windows-fundamentals-1.png
