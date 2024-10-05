@@ -27,17 +27,9 @@
 |                            [📝 Windows Forensics 2](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Windows%20Forensics%202.md)                            |                                                                                                                                                                   |
 ## SOC Level 1 - TryHackMe
 ### 📄 TryHackMe SOC Level 1 - Lab Writeups 📄
-| **Cyber Defense Frameworks** | **Cyber Threat Intel** |
-| :--------------------------: | :--------------------: |
-|         [📝Summit]()         |                        |
-|                              |                        |
-|                              |                        |
-|                              |                        |
-|                              |                        |
-|                              |                        |
-|                              |                        |
-
-
+|                                 **Cyber Defense Frameworks**                                 | **Cyber Threat Intel** |
+| :------------------------------------------------------------------------------------------: | :--------------------: |
+| [📝Summit](https://github.com/AustinKruse/Obsidian-Vault/blob/main/SOC%201%20Labs/Summit.md) |                        |
 Future Labs
 -------------------------------------------------
 - https://tryhackme.com/r/room/adcertificatetemplates
