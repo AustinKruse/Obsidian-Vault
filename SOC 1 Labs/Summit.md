@@ -1,5 +1,15 @@
 # Summary
 
+```
+Austin
+10/5/2024
+
+TLDR;
+1. Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder; 
+
+2. Provided 6 malware samples & advised to block them from network using above dahsboard tools; after successfully blocking them, the flag is provided.
+```
+
 Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder block the provided sample.exe's from the network.  This is an interactive lab, where once you complete an objective, there is a Mail tab that will show you further instructions.
 
 Objective
@@ -17,7 +27,7 @@ Completing the preceding rooms in the [Cyber Defence Frameworks module](https:/
 
 Connection Details
 
-Please click **Start Machine** to deploy the application, and navigate to [https://10-10-38-29.p.thmlabs.com](https://10-10-38-29.p.thmlabs.com/) once the URL has been populated.
+Please click **Start Machine** to deploy the application, and navigate to [https://10-10-38-29.p.thmlabs.com](https://10-10-38-29.p.thmlabs.com/) once the URL has been populated. (This VM is only live while doing the module, therefore this link will not work anymore)
 
 ## Questions
 
@@ -55,6 +65,7 @@ For `sample2.exe` we see it connecting to `154.35.10.113:4444`.
 Going to the `Firewall Rule Manager` tab we can see options for setting up a firewall rule.
 - Ingress: Controls traffic entering a network
 - Egress: Controls traffic leaving a network
+
 So, lets try this:
 
 ![](assets/file-20241004140121935.png)
@@ -75,6 +86,7 @@ Here is the sandbox output:
 ![](assets/file-20241004140953100.png)
 The connections to websites similar to `Microsoft` is usually used by the malware to determine connectivity & throw off anti-virus. 
 This sample connects to the same DNS: `emudyn.bresonicz.info` for the C2 server & for the `backdoor.exe` download.  Lets create a DNS rule to deny traffic to & from it.  (This is better than the IP in some aspects, i.e. if the C2 server IP changes, the rule would be bypassed)
+
 ![](assets/file-20241004143656424.png)\
 ![](assets/file-20241004144048525.png)
 

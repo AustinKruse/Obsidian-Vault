@@ -1,9 +1,8 @@
 # Cybersecurity Labs & Writeups 
 
 ## Cyber Defense Pathway - TryHackMe
-[📚 Cyber Defense Pathway Outline](https://tryhackme.com/path/outline/blueteam)
 
-### [TryHackMe Cyber Defense Pathway Outline](https://tryhackme.com/path/outline/blueteam)
+## [TryHackMe Cyber Defense Pathway Outline](https://tryhackme.com/path/outline/blueteam)
 
 |                🌐 **Cyber Defense Introduction**                | 🔍 **Threat and Vulnerability Management** |           🛡️ **Security Operations & Monitoring**            |                  🎯 **Threat Emulation**                  |            🧩 **Incident Response and Forensics**             |                       🦠 **Malware Analysis**                       |
 | :-------------------------------------------------------------: | :----------------------------------------: | :-----------------------------------------------------------: | :-------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------------------: |
@@ -15,16 +14,29 @@
 |  ![](assets/Windows-fundamentals-1.png)<br>**Windows Fundamentals 1**  |         ![](assets/misp.png)<br>**MISP**          |         ![](assets/splunk-basics.png)<br>**Splunk: Basics**          |                                                           |                ![](assets/autopsy.png)<br>**Autopsy**                |                                                                     |
 | ![](assets/Active-Directory-Basics.png)<br>**Active Directory Basics** |                                            |               ![](assets/Splunk-2.png)<br>**Splunk 2**               |                                                           | ![](assets/disk-analysis-autopsy.png)<br>**Disk Analysis & Autopsy** |                                                                     |
 
-|                                                                      📄 **TryHackMe Cyber Defense Lab Writeups** 📄                                                                       |
-| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                          [📝 Autopsy](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Autopsy.md)                                          |
-|             [📝 Basic Malware Reverse Engineering](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Basic%20Malware%20Reverse%20Engineering.md)             |
-|                      [📝 Disk Analysis & Autopsy](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Disk%20Analysis%20%26%20Autopsy.md)                      |
-|                           [📝 Investigation Windows](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Investigating%20Windows.md)                           |
-|                         [📝 Redline & IOC Editor](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Redline%20%26%20IOC%20Editor.md)                         |
-| [📝 Volatility - Memory Forensics](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Volatility%20-%20Memory%20Forensics%20THM%20Walkthrough%20(Windows).md) |
-|                            [📝 Windows Forensics 1](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Windows%20Forensics%201.md)                            |
-|                            [📝 Windows Forensics 2](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Windows%20Forensics%202.md)                            |
+### 📄 TryHackMe Cyber Defense Lab Writeups 📄
+
+|                                                                             **Incident Response & Forensics**                                                                             |                                                                       **Malware Analysis**                                                                        |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                          [📝 Autopsy](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Autopsy.md)                                          | [📝 Basic Malware Reverse Engineering](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Basic%20Malware%20Reverse%20Engineering.md) |
+|                      [📝 Disk Analysis & Autopsy](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Disk%20Analysis%20%26%20Autopsy.md)                      |                                                                                                                                                                   |
+|                           [📝 Investigation Windows](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Investigating%20Windows.md)                           |                                                                                                                                                                   |
+|                         [📝 Redline & IOC Editor](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Redline%20%26%20IOC%20Editor.md)                         |                                                                                                                                                                   |
+| [📝 Volatility - Memory Forensics](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Volatility%20-%20Memory%20Forensics%20THM%20Walkthrough%20(Windows).md) |                                                                                                                                                                   |
+|                            [📝 Windows Forensics 1](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Windows%20Forensics%201.md)                            |                                                                                                                                                                   |
+|                            [📝 Windows Forensics 2](https://github.com/AustinKruse/Obsidian-Vault/blob/main/Cyber%20Defense%20Labs/Windows%20Forensics%202.md)                            |                                                                                                                                                                   |
+## SOC Level 1 - TryHackMe
+### 📄 TryHackMe SOC Level 1 - Lab Writeups 📄
+| **Cyber Defense Frameworks** | **Cyber Threat Intel** |
+| :--------------------------: | :--------------------: |
+|         [📝Summit]()         |                        |
+|                              |                        |
+|                              |                        |
+|                              |                        |
+|                              |                        |
+|                              |                        |
+|                              |                        |
+
 
 Future Labs
 -------------------------------------------------
@@ -37,7 +49,3 @@ Future Pathways
 - https://tryhackme.com/r/path/outline/soclevel1 (in-progress)
 - https://tryhackme.com/r/path/outline/soclevel2
 
-
-notes (please disregard, just testing):
-- https://github.com/AustinKruse/AustinKruse/blob/main/assets/nessus.png
-- https://github.com/AustinKruse/AustinKruse/blob/main/assets/Windows-fundamentals-1.png

@@ -1,5 +1,4 @@
 Date - 09/23/2024
-
 # Summary
 In the attached VM, there is an Autopsy case file and its corresponding disk image. After loading the .aut file, make sure to re-point Autopsy to the disk image file.
 
