@@ -7,7 +7,9 @@ Austin
 TLDR;
 1. Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder; 
 
-2. Provided 6 malware samples (with different evasion techniques) & tasked with blocking them from network using above dahsboard tools; after successfully blocking them, the flag is provided.
+2. Provided 6 malware samples (with different evasion techniques) & tasked with blocking them from network using above dahsboard tools. 
+
+3. After successfully blocking each malware sample, the flag is provided.
 ```
 
 Provided a dashboard with a Sandbox, Firewall, Hash Manager, DNS Filter & Sigma Rule Builder block the provided sample.exe's from the network.  This is an interactive lab, where once you complete an objective, there is a Mail tab that will show you further instructions.
@@ -84,6 +86,7 @@ THM{4eca9e2f61a19ecd5df34c788e7dce16}
 Here is the sandbox output: 
 ![](assets/file-20241004140923837.png)
 ![](assets/file-20241004140953100.png)
+
 The connections to websites similar to `Microsoft` is usually used by the malware to determine connectivity & throw off anti-virus. 
 This sample connects to the same DNS: `emudyn.bresonicz.info` for the C2 server & for the `backdoor.exe` download.  Lets create a DNS rule to deny traffic to & from it.  (This is better than the IP in some aspects, i.e. if the C2 server IP changes, the rule would be bypassed)
 
