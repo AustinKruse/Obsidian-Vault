@@ -5,17 +5,13 @@ A windows machine has been hacked, its your job to go investigate this windows m
 ## Instructions
 This is a challenge that is exactly what is says on the tin, there are a few challenges around investigating a windows machine that has been previously compromised.
 
-Connect to the machine using RDP. The credentials the machine are as follows:
-
-Username: Administrator  
-Password: letmein123!
-
 -------------------------------------------------------------
 ### Questions
 **1. What's the version and year of the Windows machine?**
 ```bash
 Windows Server 2016
 ```
+`systeminfo` cmd line info would show this as well.
 this was found by right clicking the Windows icon & selecting `system`
 ![](assets/6dd108ff1ee8e2772cd2da1cde94cef5.png)
 
@@ -23,6 +19,8 @@ this was found by right clicking the Windows icon & selecting `system`
 ```bash
 Administrator
 ```
+`net user <username>` & comparing will show this, but let use event viewer.
+
 In the event viewer event id: `4672` is for privileges assigned to a new logon.  After filtering & searching the Security logs we see the Administrator is the last non-system account to logon.
 ![](assets/f30b8631913fa85e2123d5516e7ca60d.png)
 
@@ -30,7 +28,7 @@ In the event viewer event id: `4672` is for privileges assigned to a new logon. 
 ```plaintext
 03/02/2019 5:48:32 PM
 ```
-filter logs by event 
+filter logs by event or `net user john` 
 
 **4. What IP does the system connect to when it first starts?**
 ```plaintext
@@ -43,6 +41,10 @@ Registry location is: `HKEY_LOCAL_MACINE\SOFTWARE\Microsoft\Windows\CurrentVersi
 **5. What two accounts had administrative privileges (other than the Administrator user)?**
 ```bash
 Jenny, Guest
+```
+
+```bash
+net localgroup Administrators
 ```
 
 ![](assets/18402e3840253b3689897c10f6c88fff.png)<br>
@@ -71,6 +73,7 @@ This was stated in the Task Scheduler command as well.
 ```bash
 Never
 ```
+`net user Jenny` would show this, but lets use event viewer.
 I searched through all the filtered events with event ID of `4672` and used the Find function to try and find Jenny with no results. <br>
 ![](assets/643b72cd275da8cc93e3267421705441.png)<br>
 
@@ -129,8 +132,11 @@ hosts file screenshot above.
 
 Notes / Takeaways:
 
-```bash
-systeminfo # cmd line to generate OS info
+```cmd 
+systeminfo # OS info
+net users # lists users
+net localgroup Administrators # lists Admins
+net user username # shows user detailed info like last logon, & more;
 ```
 
 + Windows Event logger - Event ID: 4672 is privileges assigned to a new logon.  Useful to find last logged in user on a windows machine.
