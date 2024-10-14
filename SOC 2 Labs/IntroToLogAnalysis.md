@@ -16,6 +16,7 @@ Topics/Commands Used:
  - sed
  - awk
  - grep
+ - CyberChef
 
 To filter a provided apache log file.  Commands & Answers provided.
 
