@@ -48,7 +48,7 @@ One of the Desktops in the research lab at Organization X is suspected to have b
 2021-11-24 18:18:48
 ```
 
-	![[assets/Pasted image 20240829085020.png]]<br>
+![](assets/Pasted%20image%2020240829085020.png) <br>
 	Searched for keyword `Recent` & there are a few spots in the different hives to find recent information, like Apps, Docs, Items, and more.  The information was found in the NTUSER.DAT hive.
 
 5. **What is the complete path from where the python 3.8.2 installer was run?**
